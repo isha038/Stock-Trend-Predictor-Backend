@@ -4,8 +4,10 @@ import yfinance as yf
 import joblib
 import numpy as np
 
-# Load trained model
-model = joblib.load("stock_prediction_model.pkl")
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "stock_prediction_model.pkl")
+model = joblib.load(MODEL_PATH)
 
 # Initialize FastAPI app
 app = FastAPI(title="Stock Movement Prediction API")
