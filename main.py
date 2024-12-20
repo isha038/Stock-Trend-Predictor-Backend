@@ -5,6 +5,16 @@ import joblib
 import numpy as np
 
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://stock-trend-predictor-vqs4.onrender.com"],  # Replace '*' with your frontend URL in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "stock_prediction_model.pkl")
 model = joblib.load(MODEL_PATH)
